@@ -1,0 +1,11 @@
+TUCBalanceIntent for {tucId}
+TUCBalanceIntent about {tucId}
+TUCBalanceIntent give me {tucId}
+TUCBalanceIntent tell me {tucId}
+TUCBalanceIntent how much {tucId}
+
+AMAZON.HelpIntent help me
+AMAZON.HelpIntent i do not understand
+AMAZON.HelpIntent i do not know
+
+TUCBalanceintent2 {tucId}

@@ -1,0 +1,45 @@
+{
+  "intents": [
+    {
+      "intent": "TUCBalanceIntent",
+        "slots" : [{
+        "name" : "tucId",
+        "type" : "AMAZON.LITERAL"
+      }]
+    }
+    ,
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+    , {
+      "intent": "AMAZON.HelpIntent"
+    }
+    , {
+      "intent": "AMAZON.NextIntent"
+    }
+    , {
+      "intent": "AMAZON.NoIntent"
+    }
+    , {
+      "intent": "AMAZON.PauseIntent"
+    }
+    , {
+      "intent": "AMAZON.PreviousIntent"
+    }
+    , {
+      "intent": "AMAZON.RepeatIntent"
+    }
+    , {
+      "intent": "AMAZON.ResumeIntent"
+    }
+    , {
+      "intent": "AMAZON.StartOverIntent"
+    }
+    , {
+      "intent": "AMAZON.StopIntent"
+    }
+    , {
+      "intent": "AMAZON.YesIntent"
+    }
+  ]
+}
