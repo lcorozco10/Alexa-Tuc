@@ -11,24 +11,55 @@ exports.register = function register(skill) {
   		return { reply: 'Intent.Balance', to: 'checkTUCBalance' };
   	}
   	 else {
-  		return { reply: 'Intent.DDDBad', to: 'die' };
+  		return { reply: 'Intent.askAgainCardId', to: 'entry' };
   	}
 
+  });
+
+  skill.onUnhandledState((alexaEvent) => {
+	 return { reply: 'Intent.didNotUnderStand', to: 'entry' };
   });
 
   skill.onState('checkTUCBalance', (alexaEvent) => {
   	
   	return getData(alexaEvent.model.tucId)
 	  .then(balance=>{
+	  		//valid
 	  		alexaEvent.model.totalBalance = balance;
-	 	 	return { reply: 'Intent.totalBalance', to: 'die' };
+
+	 	 	return { reply: 'Intent.totalBalance', to: 'askAgainCard' };
 	  })
 	  .catch(err=>{
-	  	console.log(err)
-	  	return { reply: 'Intent.DDDBad', to: 'die' };
+	  	console.log(err);
+	  	var error = err.error.code;
+	  	if(error == 100){
+	  		//tuc invalid
+			return { to: 'askCardId' };
+
+	  	}else {
+	  		//Server error
+	  		return { reply: 'Intent.serverError', to: 'die' };
+	  	}	  	
+
 	  });
 
   });
+
+	skill.onState('askCardId', (alexaEvent) => {
+		return { reply: 'Intent.askCardId', to: 'entry' };
+
+	});
+
+	skill.onState('askAgainCard', (alexaEvent) => {
+
+		if (alexaEvent.intent.name=== 'AMAZON.YesIntent') {
+			return { reply: 'Intent.askAgainCardId', to: 'entry' };
+
+		}else if (alexaEvent.intent.name=== 'AMAZON.NoIntent') {
+			return { reply: 'Intent.exit', to: 'die' };
+		}		
+
+	});
 
   /*skill.onState('giveNumberId', (alexaEvent) => {
 
