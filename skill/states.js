@@ -3,6 +3,11 @@
 const Tuc = require('tuc');
 
 exports.register = function register(skill) {
+
+  skill.onIntent('LaunchIntent', (alexaEvent) => {
+	return { reply: 'Intent.askAgainCardId', to: 'entry' };
+  });
+
   skill.onIntent('TUCBalanceIntent', (alexaEvent) => {
 
 	alexaEvent.model.tucId = alexaEvent.intent.params.tucId

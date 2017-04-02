@@ -5,6 +5,8 @@ TUCBalanceIntent tell me {tucId}
 TUCBalanceIntent how much {tucId}
 TUCBalanceIntent {tucId}
 
+LaunchIntent open
+
 AMAZON.HelpIntent help me
 AMAZON.HelpIntent i do not understand
 AMAZON.HelpIntent i do not know
